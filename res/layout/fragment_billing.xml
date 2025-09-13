@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@color/backgroundLightGray" android:layout_width="fill_parent" android:layout_height="fill_parent">
+	<LinearLayout android:gravity="center" android:orientation="vertical" android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+		<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/signply_premium" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Headline" />
+			<ImageView android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/ic_baseline_workspace_premium_24" android:layout_marginStart="4.0dip" />
+			<View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+			<ImageButton android:id="@id/image_button_close" android:background="?selectableItemBackgroundBorderless" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@drawable/icon_close" app:tint="?colorPrimary" />
+		</LinearLayout>
+		<com.google.android.material.card.MaterialCardView android:id="@id/layout_pro" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" app:cardElevation="8.0dip">
+			<LinearLayout android:orientation="vertical" android:padding="16.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+				<TextView android:id="@id/text_product" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/signply_premium" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Headline" />
+				<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+					<TextView android:textSize="32.0sp" android:id="@id/text_price" android:paddingTop="16.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Title" />
+					<TextView android:id="@id/text_period" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Medium" />
+				</LinearLayout>
+				<View android:background="@android:color/darker_gray" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" />
+				<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+					<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_baseline_check_24" app:tint="@color/darkGreen" />
+					<TextView android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/enjoy_unlimited_signatures" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Subhead" />
+				</LinearLayout>
+				<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip">
+					<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_baseline_check_24" app:tint="@color/darkGreen" />
+					<TextView android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/signature_validation" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Subhead" />
+				</LinearLayout>
+				<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip">
+					<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_baseline_check_24" app:tint="@color/darkGreen" />
+					<TextView android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/try_first_month_for_free" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Subhead" />
+				</LinearLayout>
+				<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip">
+					<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_baseline_check_24" app:tint="@color/darkGreen" />
+					<TextView android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cancel_when_u_want" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Subhead" />
+				</LinearLayout>
+				<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip">
+					<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_baseline_check_24" app:tint="@color/darkGreen" />
+					<TextView android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sign_all_pages" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Subhead" />
+				</LinearLayout>
+				<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip">
+					<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_baseline_check_24" app:tint="@color/darkGreen" />
+					<TextView android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/signature_ltv" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Subhead" />
+				</LinearLayout>
+				<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip">
+					<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_baseline_check_24" app:tint="@color/darkGreen" />
+					<TextView android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/certificate" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Subhead" />
+				</LinearLayout>
+				<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip">
+					<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_baseline_check_24" app:tint="@color/darkGreen" />
+					<TextView android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/custom_text" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Subhead" />
+				</LinearLayout>
+				<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip">
+					<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_baseline_check_24" app:tint="@color/darkGreen" />
+					<TextView android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gps_on_signature" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Subhead" />
+				</LinearLayout>
+				<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip">
+					<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_baseline_check_24" app:tint="@color/darkGreen" />
+					<TextView android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/action_after_signing" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Subhead" />
+				</LinearLayout>
+				<View android:background="@android:color/darker_gray" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" />
+				<Button android:textSize="20.0sp" android:id="@id/button_price" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/improve_your_plan" />
+				<TextView android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/activate_more_devices" />
+				<Button android:layout_gravity="center" android:id="@id/contact_us" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_marginTop="-4.0dip" android:text="@string/contact_us" style="@style/Widget.MaterialComponents.Button.TextButton" />
+			</LinearLayout>
+		</com.google.android.material.card.MaterialCardView>
+		<com.google.android.material.card.MaterialCardView android:id="@id/layout_subscribed" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" app:cardElevation="8.0dip">
+			<LinearLayout android:orientation="vertical" android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/signply_premium" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Headline" />
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/subscribed_message" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Medium" />
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/manage_subscription_message" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Medium" />
+				<Button android:id="@id/button_manage_subscriptions" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_marginTop="4.0dip" android:text="@string/manage_subscriptions" style="@style/Widget.MaterialComponents.Button.TextButton" />
+			</LinearLayout>
+		</com.google.android.material.card.MaterialCardView>
+		<ProgressBar android:layout_gravity="center" android:id="@id/progress_bar" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+	</LinearLayout>
+</ScrollView>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGNply - Assinatura Digital</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 600px;
+            margin: 2rem;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 2rem;
+        }
+        .logo i {
+            font-size: 3rem;
+            color: #667eea;
+        }
+        h1 {
+            color: #2c3e50;
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .option-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+        .option-card:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+        }
+        .option-card i {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        .option-card h3 {
+            margin: 0 0 0.5rem 0;
+            color: #2c3e50;
+        }
+        .option-card p {
+            margin: 0;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        .features {
+            background: #e8f4fd;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        .features h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+        .features li {
+            padding: 0.5rem 0;
+            color: #2c3e50;
+        }
+        .features li:before {
+            content: "✓ ";
+            color: #28a745;
+            font-weight: bold;
+        }
+        .download-section {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 1rem 0;
+            transition: all 0.3s;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+        .status {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border: 1px solid #c3e6cb;
+        }
+        @media (max-width: 768px) {
+            .options {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                margin: 1rem;
+                padding: 2rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <i class="fas fa-signature"></i>
+            <h1>SIGNply</h1>
+        </div>
+        
+        <p class="subtitle">Assinatura Digital Simples e Segura</p>
+        
+        <div class="status">
+            <i class="fas fa-check-circle"></i>
+            <strong>Servidor Online</strong> - Aplicação convertida para WebApp
+        </div>
+
+        <div class="options">
+            <a href="app-stable.html" class="option-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>WebApp Corrigida</h3>
+                <p>Versão com assinatura nativa funcionando</p>
+            </a>
+            
+            <a href="native-signature.html" class="option-card">
+                <i class="fas fa-pen"></i>
+                <h3>Teste de Assinatura</h3>
+                <p>Teste rápido do sistema de assinatura</p>
+            </a>
+            
+            <a href="test-drawing.html" class="option-card">
+                <i class="fas fa-paint-brush"></i>
+                <h3>Teste de Desenho</h3>
+                <p>Teste básico de canvas nativo</p>
+            </a>
+            
+            <a href="classes.dex" class="option-card" download="signply-app.apk">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>APK Android</h3>
+                <p>Download do app original</p>
+            </a>
+        </div>
+
+        <div class="features">
+            <h3>🚀 Funcionalidades da WebApp</h3>
+            <ul>
+                <li>Assinatura digital de documentos (PDF, Word, Excel, imagens)</li>
+                <li>Upload e visualização de documentos</li>
+                <li>Sistema de autenticação</li>
+                <li>Validação de assinaturas</li>
+                <li>Compartilhamento de documentos</li>
+                <li>Configurações personalizáveis</li>
+                <li>Interface moderna e responsiva</li>
+                <li>Armazenamento local seguro</li>
+            </ul>
+        </div>
+
+        <div class="download-section">
+            <h3>📱 Download do APK Original</h3>
+            <p>Se preferir usar o aplicativo Android original:</p>
+            <a href="classes.dex" class="download-btn" download="signply-app.apk">
+                <i class="fas fa-download"></i>
+                Baixar APK Android
+            </a>
+            <p style="font-size: 0.9rem; color: #7f8c8d; margin-top: 1rem;">
+                Requer Android 5.0+ | Permissões: Câmera, Localização, Armazenamento
+            </p>
+        </div>
+
+        <p style="color: #7f8c8d; font-size: 0.9rem; margin-top: 2rem;">
+            <em>Servidor rodando em: <strong>http://localhost/appassinatura/</strong></em>
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:padding="8.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+	<Button android:textSize="12.0sp" android:id="@id/fill_participant_data_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fill_with_my_data" style="@style/Widget.MaterialComponents.Button.TextButton" />
+	<com.google.android.material.textfield.TextInputLayout android:id="@id/participant_name_til" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/participant_name" app:errorEnabled="true" app:startIconDrawable="@drawable/ic_baseline_person_24" style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+		<com.google.android.material.textfield.TextInputEditText android:layout_width="fill_parent" android:layout_height="wrap_content" />
+	</com.google.android.material.textfield.TextInputLayout>
+	<com.google.android.material.textfield.TextInputLayout android:id="@id/participant_email_til" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:hint="@string/signply_sdk_email" app:errorEnabled="true" app:startIconDrawable="@drawable/ic_baseline_email_24" style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+		<com.google.android.material.textfield.TextInputEditText android:layout_width="fill_parent" android:layout_height="wrap_content" />
+	</com.google.android.material.textfield.TextInputLayout>
+	<com.google.android.material.textfield.TextInputLayout android:id="@id/participant_role_til" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:hint="@string/psc_required_action" style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+		<AutoCompleteTextView android:id="@id/tv_with_spinner_behavior" android:focusable="true" android:focusableInTouchMode="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:inputType="none" />
+	</com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>

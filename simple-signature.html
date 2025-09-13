@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGNply - Teste de Assinatura Simples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .signature-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+        }
+        #signaturePad {
+            border: 2px solid #333;
+            background: white;
+            cursor: crosshair;
+            display: block;
+            margin: 10px 0;
+        }
+        .controls {
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background: #007bff;
+            color: white;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            background: #e9ecef;
+        }
+        .color-picker {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .color-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+        .color-btn.active {
+            border-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✍️ Teste de Assinatura Digital</h1>
+        
+        <div class="status" id="status">
+            Carregando sistema de assinatura...
+        </div>
+        
+        <div class="signature-section">
+            <h3>Desenhe sua assinatura:</h3>
+            <canvas id="signaturePad" width="600" height="200"></canvas>
+            
+            <div class="color-picker">
+                <button class="color-btn active" data-color="#000000" style="background: #000000;"></button>
+                <button class="color-btn" data-color="#0066cc" style="background: #0066cc;"></button>
+                <button class="color-btn" data-color="#cc0000" style="background: #cc0000;"></button>
+                <button class="color-btn" data-color="#009900" style="background: #009900;"></button>
+            </div>
+            
+            <div class="controls">
+                <button onclick="clearSignature()">Limpar</button>
+                <button onclick="testSignature()">Testar</button>
+                <button onclick="downloadSignature()">Download</button>
+            </div>
+        </div>
+        
+        <div class="status" id="result">
+            Nenhuma assinatura ainda
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/2.3.2/signature_pad.min.js"></script>
+    
+    <script>
+        let signaturePad = null;
+        let currentColor = '#000000';
+        
+        function updateStatus(message, type = 'info') {
+            const statusDiv = document.getElementById('status');
+            statusDiv.textContent = message;
+            statusDiv.style.background = type === 'error' ? '#f8d7da' : 
+                                        type === 'success' ? '#d4edda' : '#e9ecef';
+        }
+        
+        function initializeSignaturePad() {
+            try {
+                const canvas = document.getElementById('signaturePad');
+                if (!canvas) {
+                    updateStatus('Canvas não encontrado', 'error');
+                    return false;
+                }
+                
+                updateStatus('Inicializando sistema de assinatura...', 'info');
+                
+                signaturePad = new SignaturePad(canvas, {
+                    backgroundColor: 'rgba(255, 255, 255, 0)',
+                    penColor: currentColor,
+                    minWidth: 1,
+                    maxWidth: 3,
+                    throttle: 16,
+                    minDistance: 5
+                });
+                
+                // Add event listeners
+                signaturePad.addEventListener('beginStroke', () => {
+                    console.log('Stroke began');
+                    updateStatus('Desenhando...', 'info');
+                });
+                
+                signaturePad.addEventListener('endStroke', () => {
+                    console.log('Stroke ended');
+                    updateStatus('Sistema de assinatura funcionando!', 'success');
+                });
+                
+                updateStatus('Sistema de assinatura pronto!', 'success');
+                return true;
+            } catch (error) {
+                console.error('Error:', error);
+                updateStatus('Erro ao inicializar: ' + error.message, 'error');
+                return false;
+            }
+        }
+        
+        function clearSignature() {
+            if (signaturePad) {
+                signaturePad.clear();
+                updateStatus('Assinatura limpa', 'info');
+                document.getElementById('result').textContent = 'Nenhuma assinatura ainda';
+            } else {
+                updateStatus('Sistema não inicializado', 'error');
+            }
+        }
+        
+        function testSignature() {
+            if (!signaturePad) {
+                updateStatus('Sistema não inicializado', 'error');
+                return;
+            }
+            
+            if (signaturePad.isEmpty()) {
+                updateStatus('Desenhe uma assinatura primeiro', 'error');
+            } else {
+                updateStatus('Assinatura detectada!', 'success');
+                document.getElementById('result').textContent = 'Assinatura válida - ' + 
+                    (signaturePad.toDataURL().length) + ' caracteres de dados';
+            }
+        }
+        
+        function downloadSignature() {
+            if (!signaturePad || signaturePad.isEmpty()) {
+                updateStatus('Desenhe uma assinatura primeiro', 'error');
+                return;
+            }
+            
+            const link = document.createElement('a');
+            link.download = 'signature.png';
+            link.href = signaturePad.toDataURL();
+            link.click();
+            updateStatus('Assinatura baixada!', 'success');
+        }
+        
+        // Color picker
+        document.querySelectorAll('.color-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                currentColor = e.target.dataset.color;
+                
+                if (signaturePad) {
+                    signaturePad.penColor = currentColor;
+                    updateStatus('Cor alterada para: ' + currentColor, 'info');
+                }
+            });
+        });
+        
+        // Initialize when page loads
+        window.addEventListener('load', () => {
+            updateStatus('Carregando biblioteca...', 'info');
+            
+            if (typeof SignaturePad === 'undefined') {
+                updateStatus('Biblioteca SignaturePad não carregada', 'error');
+                return;
+            }
+            
+            setTimeout(() => {
+                initializeSignaturePad();
+            }, 500);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+	<com.edatalia.signply.presentation.settings.digitize_business.PreferenceDigitizeBusinessLayout app:key="preference-digitize-business-layout" app:layout="@layout/preference_digitize_business_layout" />
+</PreferenceScreen>

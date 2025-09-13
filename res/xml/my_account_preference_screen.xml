@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="fill_parent">
+	<PreferenceCategory android:icon="@drawable/ic_baseline_person_primary_24" android:title="@string/personal_info">
+		<EditTextPreference android:title="@string/username" android:key="username-key" />
+		<Preference android:title="@string/subscription_plan" android:key="plan-key" />
+		<com.edatalia.signply.presentation.settings.account.PreferenceSubscriptionCodeLayout app:allowDividerAbove="false" app:key="preference-subscription-code-layout" />
+	</PreferenceCategory>
+	<PreferenceCategory android:icon="@drawable/ic_baseline_edit_primary_24" android:title="@string/config_signature">
+		<ListPreference app:entries="@array/pref_signature_box_type_entries" app:entryValues="@array/pref_signature_box_type_values" app:key="signature-box-type" app:title="@string/signature_box_type" />
+		<ListPreference app:entries="@array/pref_signature_thickness_entries" app:entryValues="@array/pref_signature_thickness_values" app:key="signature-thickness" app:title="@string/signature_thickness" />
+		<ListPreference app:entries="@array/pref_signature_colors_entries" app:entryValues="@array/pref_signature_colors_values" app:key="signature-color" app:title="@string/pencil_color" />
+	</PreferenceCategory>
+	<PreferenceCategory android:icon="@drawable/ic_baseline_workspace_premium_24" android:title="@string/premium_features">
+		<ListPreference android:icon="@drawable/ic_baseline_circle_24" app:entries="@array/pref_action_after_signing_entries" app:entryValues="@array/pref_action_after_signing_values" app:key="action_after_signature" app:title="@string/action_after_signing" />
+		<SwitchPreference android:icon="@drawable/ic_baseline_circle_24" android:title="@string/signature_validation" android:key="signature-validatable" />
+		<SwitchPreference android:title="@string/sign_all_pages" android:key="signature-all-pages" />
+		<SwitchPreference android:title="@string/signature_ltv" android:key="signature-tsp-activate" />
+		<SwitchPreference android:title="@string/gps_on_signature" android:key="signature-gps-activate" />
+		<SwitchPreference android:title="@string/add_custom_text" android:key="signature-request-custom-text" />
+		<SwitchPreference android:title="@string/certificate" android:key="signature-user-certificate-activate" android:summary="@string/use_user_certificate_summary" />
+		<Preference android:title="@string/select_certificate" android:key="alias-selected-user-certificate" android:dependency="signature-user-certificate-activate" app:useSimpleSummaryProvider="true" />
+		<SwitchPreference android:icon="@drawable/ic_baseline_circle_24" android:title="@string/create_copy_on_google_drive" android:key="create-copy-google-drive-activate" />
+	</PreferenceCategory>
+</PreferenceScreen>

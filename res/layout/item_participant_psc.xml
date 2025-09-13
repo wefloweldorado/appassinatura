@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="horizontal" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="8.0dip">
+	<LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginStart="8.0dip" android:layout_marginEnd="0.0dip">
+		<TextView android:textColor="#ff222222" android:id="@id/participant_name_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="4.0dip" style="@style/TextAppearance.AppCompat.Body2" />
+		<TextView android:id="@id/participant_email_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="4.0dip" style="@style/TextAppearance.AppCompat.Body1" />
+		<TextView android:id="@id/participant_role_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="4.0dip" style="@style/TextAppearance.AppCompat.Body1" />
+	</LinearLayout>
+	<ImageButton android:layout_gravity="end|center" android:id="@id/delete_participant_button" android:background="?selectableItemBackgroundBorderless" android:layout_width="48.0dip" android:layout_height="fill_parent" android:src="@drawable/ic_baseline_delete_24" app:tint="@android:color/holo_red_dark" />
+	<ImageButton android:id="@id/sort_participant_button" android:background="?selectableItemBackgroundBorderless" android:layout_width="48.0dip" android:layout_height="?listPreferredItemHeight" android:src="@drawable/ic_baseline_swap_vert_24" app:tint="#ff888888" />
+</LinearLayout>

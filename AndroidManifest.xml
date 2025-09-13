@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="33" android:compileSdkVersionCodename="13" android:versionCode="301" android:versionName="4.8.0" package="com.edatalia.signply" platformBuildVersionCode="33" platformBuildVersionName="13">
+	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33" />
+	<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.CAMERA" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="com.android.vending.BILLING" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+	<uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+	<permission android:name="com.edatalia.signply.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" android:protectionLevel="signature" />
+	<uses-permission android:name="com.edatalia.signply.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+	<uses-feature android:name="android.hardware.camera" android:required="false" />
+	<uses-feature android:name="android.hardware.camera.front" android:required="false" />
+	<uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+	<uses-feature android:name="android.hardware.camera.flash" android:required="false" />
+	<uses-feature android:name="android.hardware.screen.landscape" android:required="false" />
+	<uses-feature android:name="android.hardware.wifi" android:required="false" />
+	<application android:allowBackup="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:fullBackupOnly="true" android:hardwareAccelerated="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:largeHeap="true" android:name="com.edatalia.signply.MainApplication" android:requestLegacyExternalStorage="false" android:roundIcon="@mipmap/ic_launcher_round" android:supportsRtl="true" android:theme="@style/Theme.SIGNply">
+		<activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="true" android:name="com.edatalia.signply.presentation.main.MainActivity" />
+		<activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="true" android:name="com.edatalia.signply.presentation.external.content.ExternalContentActivity" android:theme="@style/Theme.SplashScreen">
+			<intent-filter>
+				<category android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.action.BROWSABLE" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<action android:name="android.intent.action.SEND" />
+				<action android:name="android.intent.action.SEND_MULTIPLE" />
+				<data android:mimeType="image/*" />
+				<data android:mimeType="text/*" />
+				<data android:mimeType="application/pdf" />
+				<data android:mimeType="application/msword" />
+				<data android:mimeType="application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+				<data android:mimeType="application/vnd.oasis.opendocument.presentation" />
+				<data android:mimeType="application/vnd.oasis.opendocument.spreadsheet" />
+				<data android:mimeType="application/vnd.oasis.opendocument.text" />
+				<data android:mimeType="application/vnd.ms-powerpoint" />
+				<data android:mimeType="application/vnd.openxmlformats-officedocument.presentationml.presentation" />
+				<data android:mimeType="application/rtf" />
+				<data android:mimeType="application/vnd.ms-excel" />
+				<data android:mimeType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+				<data android:mimeType="application/xml" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<action android:name="android.intent.action.EDIT" />
+				<category android:name="android.intent.category.VIEW" />
+				<data android:scheme="content" />
+				<data android:scheme="file" />
+				<data android:mimeType="image/*" />
+				<data android:mimeType="text/*" />
+				<data android:mimeType="application/pdf" />
+				<data android:mimeType="application/msword" />
+				<data android:mimeType="application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+				<data android:mimeType="application/vnd.oasis.opendocument.presentation" />
+				<data android:mimeType="application/vnd.oasis.opendocument.spreadsheet" />
+				<data android:mimeType="application/vnd.oasis.opendocument.text" />
+				<data android:mimeType="application/vnd.ms-powerpoint" />
+				<data android:mimeType="application/vnd.openxmlformats-officedocument.presentationml.presentation" />
+				<data android:mimeType="application/rtf" />
+				<data android:mimeType="application/vnd.ms-excel" />
+				<data android:mimeType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+				<data android:mimeType="application/xml" />
+			</intent-filter>
+		</activity>
+		<activity android:exported="true" android:name="com.edatalia.signply.presentation.login.LoginActivity" android:theme="@style/Theme.SplashScreen">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+		</activity>
+		<activity android:exported="true" android:name="com.edatalia.signply.presentation.welcome.WelcomeActivity" />
+		<activity android:exported="true" android:name="com.edatalia.signply.presentation.welcome.NewUpdatesActivity" />
+		<activity android:exported="true" android:name="com.edatalia.signply.presentation.webview.WebViewActivity">
+			<intent-filter>
+				<action android:name="action.open.url" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+		</activity>
+		<activity android:exported="true" android:label="@string/digitize_business" android:name="com.edatalia.signply.presentation.welcome.DigitizeBusinessActivity" android:parentActivityName="com.edatalia.signply.presentation.welcome.WelcomeActivity" />
+		<activity android:clearTaskOnLaunch="true" android:name="com.journeyapps.barcodescanner.CaptureActivity" android:screenOrientation="fullSensor" android:stateNotNeeded="true" android:theme="@style/zxing_CaptureTheme" android:windowSoftInputMode="stateAlwaysHidden" />
+		<service android:exported="false" android:name="com.edatalia.signply.service.FirebaseNotificationsService">
+			<intent-filter>
+				<action android:name="com.google.firebase.MESSAGING_EVENT" />
+			</intent-filter>
+		</service>
+		<meta-data android:name="com.google.firebase.messaging.default_notification_color" android:resource="@color/primary" />
+		<meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@drawable/ic_notification" />
+		<meta-data android:name="com.google.firebase.messaging.default_notification_channel_id" android:value="@string/notification" />
+		<provider android:authorities="com.edatalia.signply.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider">
+			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/filepaths" />
+		</provider>
+		<meta-data android:name="google_analytics_automatic_screen_reporting_enabled" android:value="false" />
+		<activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="SignplySDK" android:name="com.edatalia.signplysdk.presentation.SignplySDKLauncher" android:theme="@style/Theme.SIGNplySDK" />
+		<activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="SignplySDK" android:name="com.edatalia.signplypscsdk.activity.SignplySDKPSCLauncher" android:screenOrientation="nosensor" android:theme="@style/Theme.SIGNplySDK" />
+		<activity android:excludeFromRecents="true" android:exported="false" android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+		<service android:exported="true" android:name="com.google.android.gms.auth.api.signin.RevocationBoundService" android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" android:visibleToInstantApps="true" />
+		<service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.components.ComponentDiscoveryService">
+			<meta-data android:name="com.google.firebase.components:com.google.firebase.auth.ktx.FirebaseAuthKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+			<meta-data android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+			<meta-data android:name="com.google.firebase.components:com.google.firebase.firestore.ktx.FirebaseFirestoreKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+			<meta-data android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+			<meta-data android:name="com.google.firebase.components:com.google.firebase.messaging.ktx.FirebaseMessagingKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+			<meta-data android:name="com.google.firebase.components:com.google.firebase.crashlytics.ktx.FirebaseCrashlyticsKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+			<meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.ktx.FirebaseAnalyticsKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+			<meta-data android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+			<meta-data android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+			<meta-data android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+			<meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+			<meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+			<meta-data android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+		</service>
+		<activity android:excludeFromRecents="true" android:exported="true" android:launchMode="singleTask" android:name="com.google.firebase.auth.internal.GenericIdpActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:host="firebase.auth" android:path="/" android:scheme="genericidp" />
+			</intent-filter>
+		</activity>
+		<activity android:excludeFromRecents="true" android:exported="true" android:launchMode="singleTask" android:name="com.google.firebase.auth.internal.RecaptchaActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:host="firebase.auth" android:path="/" android:scheme="recaptcha" />
+			</intent-filter>
+		</activity>
+		<service android:enabled="true" android:exported="false" android:name="com.google.firebase.auth.api.fallback.service.FirebaseAuthFallbackService">
+			<intent-filter>
+				<action android:name="com.google.firebase.auth.api.gms.service.START" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+		</service>
+		<activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+		<receiver android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+			<intent-filter>
+				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
+			</intent-filter>
+		</receiver>
+		<service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.messaging.FirebaseMessagingService">
+			<intent-filter android:priority="-500">
+				<action android:name="com.google.firebase.MESSAGING_EVENT" />
+			</intent-filter>
+		</service>
+		<provider android:authorities="com.edatalia.signply.firebaseinitprovider" android:directBootAware="true" android:exported="false" android:initOrder="100" android:name="com.google.firebase.provider.FirebaseInitProvider" />
+		<activity android:exported="false" android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity" android:stateNotNeeded="true" android:theme="@style/Theme.PlayCore.Transparent" />
+		<receiver android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementReceiver" />
+		<service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementService" />
+		<service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE" />
+		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+		<uses-library android:name="androidx.window.extensions" android:required="false" />
+		<uses-library android:name="androidx.window.sidecar" android:required="false" />
+		<provider android:authorities="com.edatalia.signply.androidx-startup" android:exported="false" android:name="androidx.startup.InitializationProvider">
+			<meta-data android:name="androidx.emoji2.text.EmojiCompatInitializer" android:value="androidx.startup" />
+			<meta-data android:name="androidx.lifecycle.ProcessLifecycleInitializer" android:value="androidx.startup" />
+		</provider>
+		<service android:directBootAware="true" android:exported="false" android:name="androidx.room.MultiInstanceInvalidationService" />
+		<service android:exported="false" android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery">
+			<meta-data android:name="backend:com.google.android.datatransport.cct.CctBackendFactory" android:value="cct" />
+		</service>
+		<service android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE" />
+		<receiver android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver" />
+		<meta-data android:name="com.google.android.play.billingclient.version" android:value="4.0.0" />
+		<activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:exported="false" android:name="com.android.billingclient.api.ProxyBillingActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+		<meta-data android:name="com.android.dynamic.apk.fused.modules" android:value="base" />
+		<meta-data android:name="com.android.stamp.source" android:value="https://play.google.com/store" />
+		<meta-data android:name="com.android.stamp.type" android:value="STAMP_TYPE_STANDALONE_APK" />
+		<meta-data android:name="com.android.vending.splits" android:resource="@xml/splits0" />
+		<meta-data android:name="com.android.vending.derived.apk.id" android:value="2" />
+	</application>
+</manifest>

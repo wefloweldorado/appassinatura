@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="fill_parent" android:layout_height="fill_parent" android:animateLayoutChanges="true">
+	<com.edatalia.pdfium.pdfviewer.PDFView android:id="@id/pdfView" android:background="@color/signply_sdk_background_pdfview" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_behavior="@string/appbar_scrolling_view_behavior">
+		<com.google.android.material.chip.Chip android:textSize="16.0sp" android:textStyle="bold" android:textColor="@android:color/black" android:id="@id/recipient_name_chip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="" android:alpha="0.75" android:layout_marginStart="8.0dip" android:backgroundTint="@android:color/darker_gray" />
+		<include android:id="@id/created_signature_widget_layout" android:visibility="invisible" layout="@layout/signature_widget" />
+	</com.edatalia.pdfium.pdfviewer.PDFView>
+	<include android:id="@id/require_signature_view_layout" android:visibility="invisible" layout="@layout/require_signature_view_layout" />
+	<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton android:layout_gravity="end|bottom|center" android:id="@id/require_signature_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="16.0dip" android:text="@string/sign" android:backgroundTint="?colorPrimary" app:icon="@drawable/ic_baseline_sign_24" />
+	<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton android:layout_gravity="start|bottom|center" android:id="@id/reject_document_button" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="16.0dip" app:icon="@drawable/reject" app:tint="@android:color/white" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

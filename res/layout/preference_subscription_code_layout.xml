@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+	<LinearLayout android:gravity="start|center" android:orientation="vertical" android:id="@id/layout_subscription_code" android:background="?selectableItemBackground" android:focusable="true" android:clickable="true" android:layout_width="0.0dip" android:layout_height="72.0dip" android:layout_weight="1.0" android:paddingStart="72.0dip" android:paddingEnd="16.0dip">
+		<TextView android:textColor="?colorOnSurface" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/user_key" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Subhead" />
+		<TextView android:id="@id/text_subscription_code" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+	</LinearLayout>
+	<ImageButton android:id="@id/button_delete_subscription_code" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/ic_baseline_delete_24" app:tint="@color/darkRed" style="@style/Widget.MaterialComponents.Button.TextButton" />
+	<ProgressBar android:layout_gravity="center" android:id="@id/progress_bar" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:indeterminate="true" />
+</LinearLayout>

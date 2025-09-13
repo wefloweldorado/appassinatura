@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+	<item android:icon="@drawable/ic_baseline_people_24" android:id="@id/action_show_psc_participants" android:orderInCategory="300" android:title="@string/psc_add_participant" app:actionLayout="@layout/action_layout_participants_badge" app:showAsAction="always" />
+</menu>

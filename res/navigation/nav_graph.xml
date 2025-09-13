@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@id/nav_graph" app:startDestination="@id/LocalFragment">
+	<fragment android:label="@string/digitize_business" android:name="com.edatalia.signply.presentation.settings.digitize_business.DigitizeBusinessPreferenceFragment" android:id="@id/DigitizeBusinessPreferenceFragment" />
+	<fragment android:label="@string/local_documents" android:name="com.edatalia.signply.presentation.local.LocalDocumentFragment" android:id="@id/LocalFragment">
+		<action android:id="@id/action_LocalFragment_to_MainSettingsFragment" app:destination="@id/MainSettingsFragment" />
+	</fragment>
+	<fragment android:label="@string/pending_documents" android:name="com.edatalia.signply.presentation.pending.PendingDocumentFragment" android:id="@id/PendingFragment">
+		<action android:id="@id/action_PendingFragment_to_MainSettingsFragment" app:destination="@id/MainSettingsFragment" />
+	</fragment>
+	<fragment android:label="@string/menu" android:name="com.edatalia.signply.presentation.settings.MainSettingsFragment" android:id="@id/MainSettingsFragment">
+		<action android:id="@id/action_MainSettingsFragment_to_MyAccountPreferenceFragment" app:destination="@id/MyAccountPreferenceFragment" />
+		<action android:id="@id/action_MainSettingsFragment_to_HelpPreferenceFragment" app:destination="@id/HelpPreferenceFragment" />
+		<action android:id="@id/action_MainSettingsFragment_to_DigitizeBusinessPreferenceFragment" app:destination="@id/DigitizeBusinessPreferenceFragment" />
+		<action android:id="@id/action_MainSettingsFragment_to_billingFragment" app:destination="@id/billingFragment" />
+	</fragment>
+	<fragment android:label="@string/account" android:name="com.edatalia.signply.presentation.settings.account.MyAccountPreferenceFragment" android:id="@id/MyAccountPreferenceFragment" />
+	<fragment android:label="@string/help" android:name="com.edatalia.signply.presentation.settings.help.HelpPreferenceFragment" android:id="@id/HelpPreferenceFragment" />
+	<fragment android:label="@string/signply_premium" android:name="com.edatalia.signply.presentation.billing.BillingFragment" android:id="@id/billingFragment" />
+</navigation>

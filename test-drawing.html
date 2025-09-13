@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Desenho - Assinatura</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .canvas-container {
+            border: 3px solid #333;
+            background: white;
+            margin: 20px 0;
+            position: relative;
+        }
+        #drawCanvas {
+            display: block;
+            cursor: crosshair;
+            background: white;
+        }
+        .controls {
+            margin: 20px 0;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .status {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            background: #e9ecef;
+            font-weight: bold;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+        .event-log {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🎨 Teste de Desenho - Canvas Nativo</h1>
+        
+        <div class="status" id="status">Inicializando...</div>
+        
+        <div class="canvas-container">
+            <canvas id="drawCanvas" width="500" height="200"></canvas>
+        </div>
+        
+        <div class="controls">
+            <button onclick="clearCanvas()">Limpar</button>
+            <button onclick="testDrawing()">Testar Desenho</button>
+            <button onclick="checkCanvas()">Verificar Canvas</button>
+        </div>
+        
+        <div class="status" id="result">Nenhum desenho ainda</div>
+        
+        <h3>Log de Eventos:</h3>
+        <div class="event-log" id="eventLog"></div>
+    </div>
+
+    <script>
+        let canvas = null;
+        let ctx = null;
+        let isDrawing = false;
+        let events = [];
+        
+        function log(message) {
+            const timestamp = new Date().toLocaleTimeString();
+            events.push(`[${timestamp}] ${message}`);
+            updateEventLog();
+            console.log(message);
+        }
+        
+        function updateEventLog() {
+            const logDiv = document.getElementById('eventLog');
+            logDiv.innerHTML = events.join('<br>');
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+        
+        function updateStatus(message, type = 'info') {
+            const statusDiv = document.getElementById('status');
+            statusDiv.textContent = message;
+            statusDiv.className = `status ${type}`;
+        }
+        
+        function initializeCanvas() {
+            try {
+                canvas = document.getElementById('drawCanvas');
+                if (!canvas) {
+                    updateStatus('Canvas não encontrado!', 'error');
+                    return false;
+                }
+                
+                ctx = canvas.getContext('2d');
+                if (!ctx) {
+                    updateStatus('Contexto 2D não disponível!', 'error');
+                    return false;
+                }
+                
+                // Configure canvas
+                ctx.strokeStyle = '#000000';
+                ctx.lineWidth = 2;
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+                
+                // Add event listeners
+                canvas.addEventListener('mousedown', startDrawing);
+                canvas.addEventListener('mousemove', draw);
+                canvas.addEventListener('mouseup', stopDrawing);
+                canvas.addEventListener('mouseout', stopDrawing);
+                
+                // Touch events
+                canvas.addEventListener('touchstart', handleTouch);
+                canvas.addEventListener('touchmove', handleTouch);
+                canvas.addEventListener('touchend', stopDrawing);
+                
+                updateStatus('Canvas inicializado com sucesso!', 'success');
+                log('Canvas inicializado - Mouse e Touch habilitados');
+                return true;
+            } catch (error) {
+                updateStatus('Erro ao inicializar: ' + error.message, 'error');
+                log('ERRO: ' + error.message);
+                return false;
+            }
+        }
+        
+        function startDrawing(e) {
+            e.preventDefault();
+            isDrawing = true;
+            log('Mouse DOWN - Iniciando desenho');
+            
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+        }
+        
+        function draw(e) {
+            if (!isDrawing) return;
+            e.preventDefault();
+            
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            
+            log(`Mouse MOVE - Desenhando em (${Math.round(x)}, ${Math.round(y)})`);
+        }
+        
+        function stopDrawing(e) {
+            if (!isDrawing) return;
+            e.preventDefault();
+            isDrawing = false;
+            log('Mouse UP - Parando desenho');
+        }
+        
+        function handleTouch(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent(e.type === 'touchstart' ? 'mousedown' : 
+                                           e.type === 'touchmove' ? 'mousemove' : 'mouseup', {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            canvas.dispatchEvent(mouseEvent);
+            log(`Touch ${e.type} - Convertido para mouse`);
+        }
+        
+        function clearCanvas() {
+            if (ctx) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                updateStatus('Canvas limpo!', 'success');
+                log('Canvas limpo');
+            } else {
+                updateStatus('Canvas não inicializado!', 'error');
+            }
+        }
+        
+        function testDrawing() {
+            if (!ctx) {
+                updateStatus('Canvas não inicializado!', 'error');
+                return;
+            }
+            
+            // Draw a test line
+            ctx.strokeStyle = '#ff0000';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(50, 50);
+            ctx.lineTo(450, 150);
+            ctx.stroke();
+            
+            updateStatus('Linha de teste desenhada!', 'success');
+            log('Linha de teste desenhada automaticamente');
+        }
+        
+        function checkCanvas() {
+            const info = {
+                canvas: !!canvas,
+                context: !!ctx,
+                width: canvas ? canvas.width : 'N/A',
+                height: canvas ? canvas.height : 'N/A',
+                events: events.length
+            };
+            
+            updateStatus(`Canvas OK: ${JSON.stringify(info)}`, 'info');
+            log('Verificação: ' + JSON.stringify(info));
+        }
+        
+        // Initialize when page loads
+        window.addEventListener('load', function() {
+            log('Página carregada');
+            updateStatus('Inicializando canvas...', 'info');
+            
+            setTimeout(() => {
+                if (initializeCanvas()) {
+                    updateStatus('Pronto para desenhar! Clique e arraste no canvas.', 'success');
+                }
+            }, 100);
+        });
+    </script>
+</body>
+</html>

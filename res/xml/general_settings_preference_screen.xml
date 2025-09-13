@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<Preference android:icon="@drawable/ic_baseline_person_primary_24" android:title="@string/account" android:key="preference-my-account" android:fragment="com.edatalia.signply.presentation.settings.account.MyAccountPreferenceFragment" />
+	<Preference android:icon="@drawable/ic_baseline_workspace_premium_24" android:title="Premium" android:key="preference-signply-pro" />
+	<Preference android:icon="@drawable/ic_baseline_work_24" android:title="@string/services" android:key="preference-digitize-business" />
+	<Preference android:icon="@drawable/ic_baseline_help_primary_24" android:title="@string/help" android:key="preference-help" />
+	<Preference android:icon="@drawable/ic_baseline_share_primary_24" android:title="@string/share_app" android:key="preference-signply-share-key" />
+	<Preference android:icon="@drawable/ic_baseline_show_chart_primary_24" android:title="@string/rate_us" android:key="preference-signply-rate-us-key" />
+	<Preference android:icon="@drawable/ic_baseline_exit_to_app_24" android:title="@string/sign_out" android:key="preference-signply-sign-out-key" />
+</PreferenceScreen>

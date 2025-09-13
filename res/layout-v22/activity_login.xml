@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:background="?colorPrimary" android:layout_width="fill_parent" android:layout_height="fill_parent">
+	<LinearLayout android:orientation="vertical" android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="32.0dip">
+		<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+			<ImageView android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/ic_launcher_foreground_app" android:layout_marginStart="-16.0dip" app:tint="?colorOnPrimary" />
+			<TextView android:textColor="?colorOnPrimary" android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/sign_save_and_share" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Title" />
+		</LinearLayout>
+		<TextView android:textColor="?colorOnPrimary" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/sign_save_and_share_with_anyone" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Subhead" />
+		<TextView android:textColor="?colorOnPrimary" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/sign_simply_its_signply" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Subhead" />
+	</LinearLayout>
+	<LinearLayout android:orientation="vertical" android:background="@drawable/back_rounded_top_border" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginTop="32.0dip" android:layout_weight="1.0">
+		<TextView android:textStyle="bold" android:padding="16.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/sign_in_and_enjoy_advantages" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Subhead" />
+		<com.google.android.gms.common.SignInButton android:id="@id/google_sign_in_button" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingHorizontal="16.0dip" app:colorScheme="dark" />
+		<ProgressBar android:layout_gravity="center" android:id="@id/progress_bar" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:indeterminate="true" />
+	</LinearLayout>
+</LinearLayout>

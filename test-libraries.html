@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Bibliotecas</title>
+</head>
+<body>
+    <h1>Teste de Carregamento de Bibliotecas</h1>
+    <div id="status"></div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/2.3.2/signature_pad.min.js"></script>
+    
+    <script>
+        function checkLibraries() {
+            const status = document.getElementById('status');
+            let html = '<h2>Status das Bibliotecas:</h2>';
+            
+            // Check PDF.js
+            if (typeof pdfjsLib !== 'undefined') {
+                html += '<p style="color: green;">✅ PDF.js carregada com sucesso</p>';
+            } else {
+                html += '<p style="color: red;">❌ PDF.js não carregada</p>';
+            }
+            
+            // Check SignaturePad
+            if (typeof SignaturePad !== 'undefined') {
+                html += '<p style="color: green;">✅ SignaturePad carregada com sucesso</p>';
+            } else {
+                html += '<p style="color: red;">❌ SignaturePad não carregada</p>';
+            }
+            
+            status.innerHTML = html;
+        }
+        
+        // Check after page load
+        window.addEventListener('load', checkLibraries);
+        
+        // Also check after a delay
+        setTimeout(checkLibraries, 2000);
+    </script>
+</body>
+</html>

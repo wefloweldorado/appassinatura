@@ -1,0 +1,275 @@
+Manifest-Version: 1.0
+Main-Class: secureblackbox.SecureBlackboxV20LicenseInstaller
+
+Name: secureblackbox/Archivereader.class
+Java-Bean: True
+
+Name: secureblackbox/Archivewriter.class
+Java-Bean: True
+
+Name: secureblackbox/Asicsigner.class
+Java-Bean: True
+
+Name: secureblackbox/Asicverifier.class
+Java-Bean: True
+
+Name: secureblackbox/Authenticator.class
+Java-Bean: True
+
+Name: secureblackbox/Authenticodesigner.class
+Java-Bean: True
+
+Name: secureblackbox/Authenticodeverifier.class
+Java-Bean: True
+
+Name: secureblackbox/Cadessigner.class
+Java-Bean: True
+
+Name: secureblackbox/Cadesverifier.class
+Java-Bean: True
+
+Name: secureblackbox/Certificatemanager.class
+Java-Bean: True
+
+Name: secureblackbox/Certificatestorage.class
+Java-Bean: True
+
+Name: secureblackbox/Certificatevalidator.class
+Java-Bean: True
+
+Name: secureblackbox/Crlmanager.class
+Java-Bean: True
+
+Name: secureblackbox/Cryptokeymanager.class
+Java-Bean: True
+
+Name: secureblackbox/Cryptokeystorage.class
+Java-Bean: True
+
+Name: secureblackbox/Dcauth.class
+Java-Bean: True
+
+Name: secureblackbox/Dcauthwebserver.class
+Java-Bean: True
+
+Name: secureblackbox/Dtlsclient.class
+Java-Bean: True
+
+Name: secureblackbox/Dtlsserver.class
+Java-Bean: True
+
+Name: secureblackbox/Ftpclient.class
+Java-Bean: True
+
+Name: secureblackbox/Ftpserver.class
+Java-Bean: True
+
+Name: secureblackbox/Hashfunction.class
+Java-Bean: True
+
+Name: secureblackbox/Httpclient.class
+Java-Bean: True
+
+Name: secureblackbox/Httpserver.class
+Java-Bean: True
+
+Name: secureblackbox/Imapclient.class
+Java-Bean: True
+
+Name: secureblackbox/Kmipclient.class
+Java-Bean: True
+
+Name: secureblackbox/Kmipserver.class
+Java-Bean: True
+
+Name: secureblackbox/Mailreader.class
+Java-Bean: True
+
+Name: secureblackbox/Mailwriter.class
+Java-Bean: True
+
+Name: secureblackbox/Messagecompressor.class
+Java-Bean: True
+
+Name: secureblackbox/Messagedecompressor.class
+Java-Bean: True
+
+Name: secureblackbox/Messagedecryptor.class
+Java-Bean: True
+
+Name: secureblackbox/Messageencryptor.class
+Java-Bean: True
+
+Name: secureblackbox/Messagesigner.class
+Java-Bean: True
+
+Name: secureblackbox/Messagetimestamper.class
+Java-Bean: True
+
+Name: secureblackbox/Messagetimestampverifier.class
+Java-Bean: True
+
+Name: secureblackbox/Messageverifier.class
+Java-Bean: True
+
+Name: secureblackbox/Oauthclient.class
+Java-Bean: True
+
+Name: secureblackbox/Ocspmanager.class
+Java-Bean: True
+
+Name: secureblackbox/Ocspserver.class
+Java-Bean: True
+
+Name: secureblackbox/Officedecryptor.class
+Java-Bean: True
+
+Name: secureblackbox/Officeencryptor.class
+Java-Bean: True
+
+Name: secureblackbox/Officequicksigner.class
+Java-Bean: True
+
+Name: secureblackbox/Officesigner.class
+Java-Bean: True
+
+Name: secureblackbox/Officeverifier.class
+Java-Bean: True
+
+Name: secureblackbox/Otpclient.class
+Java-Bean: True
+
+Name: secureblackbox/Otpserver.class
+Java-Bean: True
+
+Name: secureblackbox/Passwordvault.class
+Java-Bean: True
+
+Name: secureblackbox/Pdfdecryptor.class
+Java-Bean: True
+
+Name: secureblackbox/Pdfencryptor.class
+Java-Bean: True
+
+Name: secureblackbox/Pdfsigner.class
+Java-Bean: True
+
+Name: secureblackbox/Pdfverifier.class
+Java-Bean: True
+
+Name: secureblackbox/Pgpkeymanager.class
+Java-Bean: True
+
+Name: secureblackbox/Pgpkeyring.class
+Java-Bean: True
+
+Name: secureblackbox/Pgpreader.class
+Java-Bean: True
+
+Name: secureblackbox/Pgpwriter.class
+Java-Bean: True
+
+Name: secureblackbox/Pop3client.class
+Java-Bean: True
+
+Name: secureblackbox/Publickeycrypto.class
+Java-Bean: True
+
+Name: secureblackbox/Restclient.class
+Java-Bean: True
+
+Name: secureblackbox/Restserver.class
+Java-Bean: True
+
+Name: secureblackbox/Rnd.class
+Java-Bean: True
+
+Name: secureblackbox/Samlidpserver.class
+Java-Bean: True
+
+Name: secureblackbox/Samlreader.class
+Java-Bean: True
+
+Name: secureblackbox/Samlspserver.class
+Java-Bean: True
+
+Name: secureblackbox/Samlwriter.class
+Java-Bean: True
+
+Name: secureblackbox/Sftpclient.class
+Java-Bean: True
+
+Name: secureblackbox/Sftpserver.class
+Java-Bean: True
+
+Name: secureblackbox/Smtpclient.class
+Java-Bean: True
+
+Name: secureblackbox/Soapclient.class
+Java-Bean: True
+
+Name: secureblackbox/Soapquicksigner.class
+Java-Bean: True
+
+Name: secureblackbox/Soapsigner.class
+Java-Bean: True
+
+Name: secureblackbox/Soapverifier.class
+Java-Bean: True
+
+Name: secureblackbox/Sshclient.class
+Java-Bean: True
+
+Name: secureblackbox/Sshkeymanager.class
+Java-Bean: True
+
+Name: secureblackbox/Symmetriccrypto.class
+Java-Bean: True
+
+Name: secureblackbox/Tlsclient.class
+Java-Bean: True
+
+Name: secureblackbox/Tlsserver.class
+Java-Bean: True
+
+Name: secureblackbox/Tspserver.class
+Java-Bean: True
+
+Name: secureblackbox/Usermanager.class
+Java-Bean: True
+
+Name: secureblackbox/Webdavclient.class
+Java-Bean: True
+
+Name: secureblackbox/Webdavserver.class
+Java-Bean: True
+
+Name: secureblackbox/Websocketclient.class
+Java-Bean: True
+
+Name: secureblackbox/Websocketserver.class
+Java-Bean: True
+
+Name: secureblackbox/Xadessigner.class
+Java-Bean: True
+
+Name: secureblackbox/Xadesverifier.class
+Java-Bean: True
+
+Name: secureblackbox/Xmldecryptor.class
+Java-Bean: True
+
+Name: secureblackbox/Xmlencryptor.class
+Java-Bean: True
+
+Name: secureblackbox/Xmlsigner.class
+Java-Bean: True
+
+Name: secureblackbox/Xmlverifier.class
+Java-Bean: True
+
+
+
+
+
+

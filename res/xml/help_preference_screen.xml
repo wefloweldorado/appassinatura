@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+	<Preference android:icon="@drawable/ic_baseline_web_primary_24" android:title="@string/signply_web" android:key="preference-signply-web" />
+	<Preference android:icon="@drawable/ic_baseline_question_answer_primary_24" android:title="@string/frequent_questions" android:key="preference-signply-faq" />
+	<Preference android:icon="@drawable/ic_baseline_contact_support_primary_24" android:title="@string/contact_us" android:key="preference-contact-us" />
+	<Preference android:icon="@drawable/ic_baseline_insert_drive_file_primary_24" android:title="@string/privacy_policy" android:key="preference-signply-privacy-policy" />
+	<Preference android:icon="@drawable/ic_baseline_build_primary_24" android:title="@string/version" android:key="preference-signply-version-key" />
+	<Preference android:icon="@drawable/ic_baseline_settings_suggest_24" android:title="@string/have_a_suggestion" android:key="preference-suggestion" android:summary="@string/help_us_to_improve" app:isPreferenceVisible="false" />
+</PreferenceScreen>

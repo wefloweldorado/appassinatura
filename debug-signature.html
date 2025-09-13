@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug - Sistema de Assinatura</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .debug-section { margin: 20px 0; padding: 20px; border: 1px solid #ccc; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .warning { background: #fff3cd; color: #856404; }
+        #signaturePad { border: 2px solid #000; background: #f9f9f9; }
+        .controls { margin: 20px 0; }
+        button { padding: 10px 20px; margin: 5px; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Debug - Sistema de Assinatura</h1>
+    
+    <div class="debug-section">
+        <h2>Status das Bibliotecas</h2>
+        <div id="libraryStatus"></div>
+    </div>
+    
+    <div class="debug-section">
+        <h2>Teste de Canvas</h2>
+        <canvas id="signaturePad" width="400" height="200"></canvas>
+        <div class="controls">
+            <button onclick="clearSignature()">Limpar</button>
+            <button onclick="testSignature()">Testar Assinatura</button>
+            <button onclick="checkSignaturePad()">Verificar Status</button>
+        </div>
+        <div id="signatureStatus"></div>
+    </div>
+    
+    <div class="debug-section">
+        <h2>Log de Eventos</h2>
+        <div id="eventLog"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/2.3.2/signature_pad.min.js"></script>
+    
+    <script>
+        let signaturePad = null;
+        let eventLog = [];
+        
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            eventLog.push(`[${timestamp}] ${message}`);
+            updateEventLog();
+            console.log(`[${type.toUpperCase()}] ${message}`);
+        }
+        
+        function updateEventLog() {
+            const logDiv = document.getElementById('eventLog');
+            logDiv.innerHTML = eventLog.map(msg => `<div>${msg}</div>`).join('');
+        }
+        
+        function checkLibraries() {
+            const statusDiv = document.getElementById('libraryStatus');
+            let html = '';
+            
+            // Check SignaturePad
+            if (typeof SignaturePad !== 'undefined') {
+                html += '<div class="status success">✅ SignaturePad carregada com sucesso</div>';
+                log('SignaturePad library loaded successfully', 'success');
+            } else {
+                html += '<div class="status error">❌ SignaturePad não carregada</div>';
+                log('SignaturePad library failed to load', 'error');
+            }
+            
+            statusDiv.innerHTML = html;
+        }
+        
+        function initializeSignaturePad() {
+            try {
+                const canvas = document.getElementById('signaturePad');
+                if (!canvas) {
+                    log('Canvas element not found', 'error');
+                    return false;
+                }
+                
+                log('Initializing SignaturePad...', 'info');
+                signaturePad = new SignaturePad(canvas, {
+                    backgroundColor: 'rgba(255, 255, 255, 0)',
+                    penColor: '#000000',
+                    minWidth: 1,
+                    maxWidth: 3
+                });
+                
+                log('SignaturePad initialized successfully', 'success');
+                return true;
+            } catch (error) {
+                log(`Error initializing SignaturePad: ${error.message}`, 'error');
+                return false;
+            }
+        }
+        
+        function clearSignature() {
+            if (signaturePad) {
+                signaturePad.clear();
+                log('Signature cleared', 'info');
+            } else {
+                log('SignaturePad not initialized', 'error');
+            }
+        }
+        
+        function testSignature() {
+            if (!signaturePad) {
+                log('SignaturePad not initialized', 'error');
+                return;
+            }
+            
+            if (signaturePad.isEmpty()) {
+                log('Signature is empty', 'warning');
+            } else {
+                log('Signature has content', 'success');
+                const dataURL = signaturePad.toDataURL();
+                log(`Signature data length: ${dataURL.length} characters`, 'info');
+            }
+        }
+        
+        function checkSignaturePad() {
+            const statusDiv = document.getElementById('signatureStatus');
+            let html = '';
+            
+            if (!signaturePad) {
+                html += '<div class="status error">❌ SignaturePad não inicializado</div>';
+            } else {
+                html += '<div class="status success">✅ SignaturePad inicializado</div>';
+                html += `<div class="status info">Canvas size: ${signaturePad.canvas.width}x${signaturePad.canvas.height}</div>`;
+                html += `<div class="status info">Is empty: ${signaturePad.isEmpty()}</div>`;
+                html += `<div class="status info">Pen color: ${signaturePad.penColor}</div>`;
+            }
+            
+            statusDiv.innerHTML = html;
+        }
+        
+        // Initialize when page loads
+        window.addEventListener('load', function() {
+            log('Page loaded, starting debug...', 'info');
+            checkLibraries();
+            
+            // Wait a bit for libraries to load
+            setTimeout(() => {
+                if (typeof SignaturePad !== 'undefined') {
+                    initializeSignaturePad();
+                    checkSignaturePad();
+                } else {
+                    log('SignaturePad still not available after delay', 'error');
+                }
+            }, 1000);
+        });
+        
+        // Add mouse/touch event listeners for debugging
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('signaturePad');
+            if (canvas) {
+                canvas.addEventListener('mousedown', () => log('Mouse down on canvas', 'info'));
+                canvas.addEventListener('mousemove', () => log('Mouse move on canvas', 'info'));
+                canvas.addEventListener('mouseup', () => log('Mouse up on canvas', 'info'));
+                canvas.addEventListener('touchstart', () => log('Touch start on canvas', 'info'));
+                canvas.addEventListener('touchmove', () => log('Touch move on canvas', 'info'));
+                canvas.addEventListener('touchend', () => log('Touch end on canvas', 'info'));
+            }
+        });
+    </script>
+</body>
+</html>

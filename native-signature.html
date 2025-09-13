@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGNply - Assinatura Nativa</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container" style="max-width: 800px; margin: 50px auto; padding: 20px;">
+        <h1>✍️ Sistema de Assinatura Nativo</h1>
+        
+        <div class="signature-section" style="border: 2px solid #ddd; padding: 20px; border-radius: 10px; margin: 20px 0;">
+            <h3>Desenhe sua assinatura:</h3>
+            
+            <div class="signature-pad-container" style="border: 2px dashed #ccc; background: white; margin: 10px 0;">
+                <canvas id="signatureCanvas" width="600" height="200" style="display: block; cursor: crosshair; background: white;"></canvas>
+            </div>
+            
+            <div class="signature-options" style="margin: 20px 0;">
+                <div class="option-group" style="margin: 10px 0;">
+                    <label>Cor da Assinatura:</label>
+                    <div class="color-picker" style="display: flex; gap: 10px; margin: 10px 0;">
+                        <button class="color-btn active" data-color="#000000" style="width: 30px; height: 30px; border-radius: 50%; border: 2px solid #333; background: #000000; cursor: pointer;"></button>
+                        <button class="color-btn" data-color="#0066cc" style="width: 30px; height: 30px; border-radius: 50%; border: 2px solid transparent; background: #0066cc; cursor: pointer;"></button>
+                        <button class="color-btn" data-color="#cc0000" style="width: 30px; height: 30px; border-radius: 50%; border: 2px solid transparent; background: #cc0000; cursor: pointer;"></button>
+                        <button class="color-btn" data-color="#009900" style="width: 30px; height: 30px; border-radius: 50%; border: 2px solid transparent; background: #009900; cursor: pointer;"></button>
+                    </div>
+                </div>
+                
+                <div class="option-group" style="margin: 10px 0;">
+                    <label>Espessura: <span id="thicknessValue">3</span>px</label>
+                    <input type="range" id="thicknessSlider" min="1" max="10" value="3" style="width: 100%; margin: 10px 0;">
+                </div>
+            </div>
+            
+            <div class="signature-actions" style="margin: 20px 0;">
+                <button onclick="clearSignature()" style="padding: 10px 20px; margin: 5px; background: #6c757d; color: white; border: none; border-radius: 5px; cursor: pointer;">Limpar</button>
+                <button onclick="testSignature()" style="padding: 10px 20px; margin: 5px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Testar</button>
+                <button onclick="downloadSignature()" style="padding: 10px 20px; margin: 5px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">Download</button>
+            </div>
+        </div>
+        
+        <div id="status" style="padding: 15px; margin: 10px 0; border-radius: 5px; background: #e9ecef; font-weight: bold;"></div>
+    </div>
+
+    <script>
+        let canvas = null;
+        let ctx = null;
+        let isDrawing = false;
+        let currentColor = '#000000';
+        let currentThickness = 3;
+        
+        function updateStatus(message, type = 'info') {
+            const statusDiv = document.getElementById('status');
+            statusDiv.textContent = message;
+            statusDiv.style.background = type === 'error' ? '#f8d7da' : 
+                                        type === 'success' ? '#d4edda' : '#e9ecef';
+            statusDiv.style.color = type === 'error' ? '#721c24' : 
+                                   type === 'success' ? '#155724' : '#0c5460';
+        }
+        
+        function initializeCanvas() {
+            try {
+                canvas = document.getElementById('signatureCanvas');
+                if (!canvas) {
+                    updateStatus('Canvas não encontrado!', 'error');
+                    return false;
+                }
+                
+                ctx = canvas.getContext('2d');
+                if (!ctx) {
+                    updateStatus('Contexto 2D não disponível!', 'error');
+                    return false;
+                }
+                
+                // Configure canvas
+                ctx.strokeStyle = currentColor;
+                ctx.lineWidth = currentThickness;
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+                
+                // Add event listeners
+                canvas.addEventListener('mousedown', startDrawing);
+                canvas.addEventListener('mousemove', draw);
+                canvas.addEventListener('mouseup', stopDrawing);
+                canvas.addEventListener('mouseout', stopDrawing);
+                
+                // Touch events
+                canvas.addEventListener('touchstart', handleTouch);
+                canvas.addEventListener('touchmove', handleTouch);
+                canvas.addEventListener('touchend', stopDrawing);
+                
+                updateStatus('Sistema de assinatura pronto! Clique e arraste para desenhar.', 'success');
+                return true;
+            } catch (error) {
+                updateStatus('Erro ao inicializar: ' + error.message, 'error');
+                return false;
+            }
+        }
+        
+        function startDrawing(e) {
+            e.preventDefault();
+            isDrawing = true;
+            
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+        }
+        
+        function draw(e) {
+            if (!isDrawing) return;
+            e.preventDefault();
+            
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            ctx.lineTo(x, y);
+            ctx.stroke();
+        }
+        
+        function stopDrawing(e) {
+            if (!isDrawing) return;
+            e.preventDefault();
+            isDrawing = false;
+        }
+        
+        function handleTouch(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent(e.type === 'touchstart' ? 'mousedown' : 
+                                           e.type === 'touchmove' ? 'mousemove' : 'mouseup', {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            canvas.dispatchEvent(mouseEvent);
+        }
+        
+        function clearSignature() {
+            if (ctx) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                updateStatus('Assinatura limpa!', 'success');
+            } else {
+                updateStatus('Canvas não inicializado!', 'error');
+            }
+        }
+        
+        function testSignature() {
+            if (!ctx) {
+                updateStatus('Canvas não inicializado!', 'error');
+                return;
+            }
+            
+            // Draw a test signature
+            ctx.strokeStyle = '#ff0000';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(50, 100);
+            ctx.quadraticCurveTo(150, 50, 250, 100);
+            ctx.quadraticCurveTo(350, 150, 450, 100);
+            ctx.stroke();
+            
+            updateStatus('Assinatura de teste desenhada!', 'success');
+        }
+        
+        function downloadSignature() {
+            if (!canvas) {
+                updateStatus('Canvas não disponível!', 'error');
+                return;
+            }
+            
+            const link = document.createElement('a');
+            link.download = 'signature.png';
+            link.href = canvas.toDataURL();
+            link.click();
+            updateStatus('Assinatura baixada!', 'success');
+        }
+        
+        // Color picker
+        document.querySelectorAll('.color-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.color-btn').forEach(b => {
+                    b.style.border = '2px solid transparent';
+                });
+                e.target.style.border = '2px solid #333';
+                currentColor = e.target.dataset.color;
+                
+                if (ctx) {
+                    ctx.strokeStyle = currentColor;
+                }
+                updateStatus('Cor alterada para: ' + currentColor, 'info');
+            });
+        });
+        
+        // Thickness slider
+        document.getElementById('thicknessSlider').addEventListener('input', (e) => {
+            currentThickness = parseInt(e.target.value);
+            document.getElementById('thicknessValue').textContent = currentThickness;
+            
+            if (ctx) {
+                ctx.lineWidth = currentThickness;
+            }
+        });
+        
+        // Initialize when page loads
+        window.addEventListener('load', function() {
+            updateStatus('Inicializando sistema de assinatura...', 'info');
+            
+            setTimeout(() => {
+                if (initializeCanvas()) {
+                    updateStatus('Sistema pronto! Desenhe sua assinatura no canvas acima.', 'success');
+                }
+            }, 100);
+        });
+    </script>
+</body>
+</html>

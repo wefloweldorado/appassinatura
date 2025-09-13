@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+	<ImageView android:layout_width="fill_parent" android:layout_height="150.0dip" android:src="@drawable/ic_launcher_foreground_app" app:tint="?colorPrimary" />
+	<TextView android:textColor="?colorOnSurface" android:gravity="center" android:id="@id/welcome_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Display1" />
+	<TextView android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" android:text="@string/welcome_to_signply" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Title" />
+	<LinearLayout android:orientation="horizontal" android:id="@id/button_go_to_documents" android:background="?selectableItemBackground" android:padding="16.0dip" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="16.0dip" android:foreground="@drawable/button_rounded_border">
+		<ImageView android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/ic_baseline_edit_primary_24" />
+		<LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginStart="16.0dip">
+			<TextView android:textStyle="bold" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/go_to_documents" android:maxLines="1" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Body1" />
+			<TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/start_sign_documents_for_free" android:maxLines="2" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Body2" />
+		</LinearLayout>
+		<ImageView android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/ic_baseline_keyboard_arrow_right_24" app:tint="?colorPrimary" />
+	</LinearLayout>
+	<LinearLayout android:orientation="horizontal" android:id="@id/button_signply_premium" android:background="?selectableItemBackground" android:padding="16.0dip" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:foreground="@drawable/button_rounded_border" android:layout_marginHorizontal="16.0dip">
+		<ImageView android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/ic_baseline_workspace_premium_24" />
+		<LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginStart="16.0dip">
+			<TextView android:textStyle="bold" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/signply_premium" android:maxLines="1" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Body1" />
+			<TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/enjoy_unlimited_signatures_and_more" android:maxLines="2" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Body2" />
+		</LinearLayout>
+		<ImageView android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/ic_baseline_keyboard_arrow_right_24" app:tint="?colorPrimary" />
+	</LinearLayout>
+	<LinearLayout android:orientation="horizontal" android:id="@id/button_signply_sdk" android:background="@drawable/button_rounded_border_back_primary" android:padding="16.0dip" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="16.0dip" android:foreground="?selectableItemBackground">
+		<ImageView android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/ic_baseline_settings_suggest_24" app:tint="?colorOnPrimary" />
+		<LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginStart="16.0dip">
+			<TextView android:textStyle="bold" android:textColor="?colorOnPrimary" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/include_signply_on_your_business" android:maxLines="1" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Body1" />
+			<TextView android:textColor="?colorOnPrimary" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/automate_signing_company_document_process" android:maxLines="2" android:fontFamily="@font/exo2_medium" style="@style/TextAppearance.AppCompat.Body2" />
+		</LinearLayout>
+		<ImageView android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/ic_baseline_keyboard_arrow_right_24" app:tint="?colorOnPrimary" />
+	</LinearLayout>
+</LinearLayout>

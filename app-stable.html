@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGNply Web - Assinatura Digital (Versão Estável)</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Versões mais estáveis das bibliotecas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/2.3.2/signature_pad.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-signature"></i>
+                <h1>SIGNply</h1>
+            </div>
+            <nav class="nav">
+                <a href="#home" class="nav-link active">Início</a>
+                <a href="#documents" class="nav-link">Meus Documentos</a>
+                <a href="#sign" class="nav-link">Assinar</a>
+                <a href="#settings" class="nav-link">Configurações</a>
+            </nav>
+            <div class="user-menu">
+                <button class="btn btn-outline" id="loginBtn">Entrar</button>
+                <div class="user-info" id="userInfo" style="display: none;">
+                    <span id="userName"></span>
+                    <button class="btn btn-sm" id="logoutBtn">Sair</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="container">
+                <div class="hero">
+                    <h2>Assine documentos digitalmente</h2>
+                    <p>Assine qualquer tipo de documento de forma rápida, segura e legal</p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary" id="uploadBtn">
+                            <i class="fas fa-upload"></i>
+                            Carregar Documento
+                        </button>
+                        <button class="btn btn-secondary" id="cameraBtn">
+                            <i class="fas fa-camera"></i>
+                            Digitalizar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="features">
+                    <div class="feature-card">
+                        <i class="fas fa-file-pdf"></i>
+                        <h3>Múltiplos Formatos</h3>
+                        <p>PDF, Word, Excel, imagens e muito mais</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Seguro e Legal</h3>
+                        <p>Assinaturas com validade jurídica</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-cloud"></i>
+                        <h3>Armazenamento na Nuvem</h3>
+                        <p>Salve e sincronize seus documentos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Documents Section -->
+        <section id="documents" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Meus Documentos</h2>
+                    <button class="btn btn-primary" id="uploadNewBtn">
+                        <i class="fas fa-plus"></i>
+                        Novo Documento
+                    </button>
+                </div>
+                <div class="documents-grid" id="documentsGrid">
+                    <!-- Documents will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Sign Section -->
+        <section id="sign" class="section">
+            <div class="container">
+                <div class="sign-container">
+                    <div class="document-viewer">
+                        <div class="viewer-header">
+                            <h3 id="documentTitle">Selecione um documento</h3>
+                            <div class="viewer-controls">
+                                <button class="btn btn-sm" id="zoomOutBtn"><i class="fas fa-search-minus"></i></button>
+                                <span id="zoomLevel">100%</span>
+                                <button class="btn btn-sm" id="zoomInBtn"><i class="fas fa-search-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="document-canvas-container">
+                            <canvas id="documentCanvas"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="signature-panel">
+                        <h3>Assinatura Digital</h3>
+                        <div class="signature-options">
+                            <div class="option-group">
+                                <label>Cor da Assinatura:</label>
+                                <div class="color-picker">
+                                    <button class="color-btn active" data-color="#000000" style="background: #000000;"></button>
+                                    <button class="color-btn" data-color="#0066cc" style="background: #0066cc;"></button>
+                                    <button class="color-btn" data-color="#cc0000" style="background: #cc0000;"></button>
+                                    <button class="color-btn" data-color="#009900" style="background: #009900;"></button>
+                                </div>
+                            </div>
+                            <div class="option-group">
+                                <label>Espessura:</label>
+                                <input type="range" id="thicknessSlider" min="1" max="10" value="3">
+                            </div>
+                            <div class="option-group">
+                                <label>Posição:</label>
+                                <select id="positionSelect">
+                                    <option value="bottom-right">Canto inferior direito</option>
+                                    <option value="bottom-left">Canto inferior esquerdo</option>
+                                    <option value="top-right">Canto superior direito</option>
+                                    <option value="top-left">Canto superior esquerdo</option>
+                                    <option value="center">Centro</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="signature-pad-container">
+                            <canvas id="signaturePad"></canvas>
+                        </div>
+                        
+                        <div class="signature-actions">
+                            <button class="btn btn-outline" id="clearSignatureBtn">Limpar</button>
+                            <button class="btn btn-primary" id="applySignatureBtn">Aplicar Assinatura</button>
+                        </div>
+                        
+                        <div class="document-actions">
+                            <button class="btn btn-success" id="saveDocumentBtn">
+                                <i class="fas fa-save"></i>
+                                Salvar Documento
+                            </button>
+                            <button class="btn btn-secondary" id="downloadBtn">
+                                <i class="fas fa-download"></i>
+                                Download
+                            </button>
+                            <button class="btn btn-info" id="shareBtn">
+                                <i class="fas fa-share"></i>
+                                Compartilhar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Settings Section -->
+        <section id="settings" class="section">
+            <div class="container">
+                <h2>Configurações</h2>
+                <div class="settings-grid">
+                    <div class="setting-card">
+                        <h3>Conta</h3>
+                        <div class="setting-item">
+                            <label>Nome:</label>
+                            <input type="text" id="userNameInput" placeholder="Seu nome">
+                        </div>
+                        <div class="setting-item">
+                            <label>Email:</label>
+                            <input type="email" id="userEmailInput" placeholder="seu@email.com">
+                        </div>
+                    </div>
+                    
+                    <div class="setting-card">
+                        <h3>Assinatura</h3>
+                        <div class="setting-item">
+                            <label>Assinatura padrão:</label>
+                            <canvas id="defaultSignaturePad" width="300" height="100"></canvas>
+                            <button class="btn btn-sm" id="saveDefaultSignatureBtn">Salvar Padrão</button>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-card">
+                        <h3>Notificações</h3>
+                        <div class="setting-item">
+                            <label>
+                                <input type="checkbox" id="emailNotifications">
+                                Receber notificações por email
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label>
+                                <input type="checkbox" id="pushNotifications">
+                                Notificações push
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Entrar</h3>
+                <button class="close-btn" id="closeLoginModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Senha:</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                </form>
+                <p class="text-center">
+                    <a href="#" id="showRegisterForm">Não tem conta? Registre-se</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Registrar</h3>
+                <button class="close-btn" id="closeRegisterModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label>Nome:</label>
+                        <input type="text" id="registerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" id="registerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Senha:</label>
+                        <input type="password" id="registerPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                </form>
+                <p class="text-center">
+                    <a href="#" id="showLoginForm">Já tem conta? Entre aqui</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- File Upload Modal -->
+    <div id="uploadModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Carregar Documento</h3>
+                <button class="close-btn" id="closeUploadModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="upload-area" id="uploadArea">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Arraste e solte seu documento aqui ou clique para selecionar</p>
+                    <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png" multiple>
+                </div>
+                <div class="upload-progress" id="uploadProgress" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <span id="progressText">0%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden file input for camera -->
+    <input type="file" id="cameraInput" accept="image/*" capture="camera" style="display: none;">
+
+    <script>
+        // Configure PDF.js worker before loading the main script
+        if (typeof pdfjsLib !== 'undefined') {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js';
+        }
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>

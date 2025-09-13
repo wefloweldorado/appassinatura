@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="pref_action_after_signing_entries"><item>@string/none</item><item>@string/open_signed_document</item><item>@string/display_share_sheet</item></string-array>
+<string-array name="pref_action_after_signing_values"><item>none</item><item>open_document</item><item>share_document</item></string-array>
+<string-array name="pref_signature_box_type_entries"><item>@string/rectangle</item><item>@string/square</item></string-array>
+<string-array name="pref_signature_box_type_values"><item>rectangle</item><item>square</item></string-array>
+<string-array name="pref_signature_colors_entries"><item>@string/black</item><item>@string/blue</item><item>@string/gray</item></string-array>
+<string-array name="pref_signature_colors_values"><item>black</item><item>blue</item><item>gray</item></string-array>
+<string-array name="pref_signature_custom_text_entries"><item>@string/fixed_text</item><item>@string/require</item></string-array>
+<string-array name="pref_signature_custom_text_values"><item>Fixed</item><item>Require</item></string-array>
+<string-array name="pref_signature_thickness_entries"><item>@string/thin</item><item>@string/medium</item><item>@string/bold</item></string-array>
+<string-array name="pref_signature_thickness_values"><item>thin</item><item>medium</item><item>bold</item></string-array>
+</resources>

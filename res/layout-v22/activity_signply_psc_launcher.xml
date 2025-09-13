@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="fill_parent" android:layout_height="fill_parent">
+	<com.edatalia.pdfium.pdfviewer.PDFView android:id="@id/pdfView" android:background="@color/signply_sdk_background_pdfview" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_behavior="@string/appbar_scrolling_view_behavior">
+		<include android:id="@id/psc_create_widget_signature_view_1" android:visibility="invisible" layout="@layout/psc_create_widget_signature_view" />
+	</com.edatalia.pdfium.pdfviewer.PDFView>
+	<com.google.android.material.floatingactionbutton.FloatingActionButton android:layout_gravity="end|bottom|center" android:id="@id/create_PSC_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="88.0dip" android:layout_marginRight="24.0dip" android:layout_marginBottom="88.0dip" android:layout_marginHorizontal="24.0dip" android:layout_marginVertical="88.0dip" app:backgroundTint="?colorPrimary" app:fabSize="mini" app:srcCompat="@drawable/ic_baseline_person_add_24" app:tint="@android:color/white" />
+	<com.google.android.material.floatingactionbutton.FloatingActionButton android:enabled="false" android:layout_gravity="end|bottom|center" android:id="@id/send_PSC_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="16.0dip" app:srcCompat="@drawable/ic_baseline_send_24" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
